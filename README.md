@@ -1,6 +1,6 @@
 # Halpert
 
-This is a library for translating HTML5 to javascript objects. It currently pulls the data marked up using RDFa.
+This is a library for translating HTML5 to HAL. It currently pulls the data marked up in RDFa.
 
 The code currently makes the following assumptions about your HTML.
 
@@ -13,7 +13,7 @@ This code does the following based on these assumptions.
 
 1. Parses the embedded objects first, gettings links and properties
 2. Parses out curies (currently, only one is parsed)
-3. Parses links from the `<head>` element and from the body (excluding embedded resources)
+3. Parses links from the `<head>` element and from the body (excluding embedded resources). Note: body links are only parsed if they have a rel
 4. Parses properties for resource
 
 This is a first draft! Please post issues or contact me on Twitter at
