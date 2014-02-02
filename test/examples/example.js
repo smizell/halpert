@@ -1,3 +1,6 @@
+// Example HAL resource
+// http://stateless.co/hal_specification.html
+
 module.exports = {
     "_links": {
         "self": [{ "href": "/orders" }],

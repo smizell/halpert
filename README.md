@@ -1,6 +1,6 @@
 # Halpert
 
-This is a library for translating HTML5 to HAL. It currently pulls the data marked up in RDFa.
+This is a library for translating HTML5 to [HAL](http://stateless.co/hal_specification.html). It currently pulls the data marked up in RDFa.
 
 The code currently makes the following assumptions about your HTML.
 
