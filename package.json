@@ -1,0 +1,32 @@
+{
+  "name": "halpert",
+  "version": "0.0.1",
+  "description": "HTML5 implentation of HAL+JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smizell/halpert"
+  },
+  "keywords": [
+    "HAL",
+    "HTML",
+    "HTML5",
+    "Hypermedia",
+    "RDFa"
+  ],
+  "dependencies": {
+    "mocha": "*",
+    "jade": "1.1.5",
+    "cheerio": "0.13.1",
+    "underscore": "1.5.2"
+  },
+  "author": "Stephen Mizell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smizell/halpert/issues"
+  },
+  "homepage": "https://github.com/smizell/halpert"
+}
