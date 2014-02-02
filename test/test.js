@@ -37,7 +37,7 @@ describe('Halpert', function() {
     var exampleLinks = example._links,
         parsedLinks = parsed._links;
 
-    it('should get the body links', function() {
+    it('should get the <a> elements', function() {
       var exampleKate = _.filter(exampleLinks['ea:admin'], function(link) {
         return link.title == 'Kate';
       })[0]
@@ -48,6 +48,8 @@ describe('Halpert', function() {
 
       assert.equal(exampleKate.href, parsedKate.href);
     })
+
+    it('should get the <link> elements');
   })
 
   describe('embedded', function() {
