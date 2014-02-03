@@ -1,11 +1,11 @@
 var assert = require("assert"),
     jade = require('jade'),
     halpert = require("../lib/halpert"),
-    example = require("./examples/example"),
+    example = require("../test/examples/example"),
     _ = require("underscore");
 
 describe('Halpert', function() {
-  var html = jade.renderFile('./examples/example.jade'),
+  var html = jade.renderFile('./test/examples/example.jade'),
       parsed = halpert(html);
 
   describe('properties', function() {
