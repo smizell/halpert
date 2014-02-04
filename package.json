@@ -1,7 +1,7 @@
 {
   "name": "halpert",
   "version": "0.0.2",
-  "description": "HTML5 implentation of HAL+JSON",
+  "description": "HTML+RDFa implentation of HAL+JSON",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
