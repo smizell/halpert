@@ -49,7 +49,12 @@ describe('Halpert', function() {
       assert.equal(exampleKate.href, parsedKate.href);
     })
 
-    it('should get the <link> elements');
+    it('should get the <link> elements', function() {
+      var html = jade.renderFile('./test/examples/link_tags.jade'),
+          parsed = halpert(html);
+
+      assert.equal(_.has(parsed._links, 'ea:history'), true);
+    })
   })
 
   describe('embedded', function() {
@@ -81,7 +86,13 @@ describe('Halpert', function() {
       assert.equal(_.has(order._links, 'ea:basket'), true);
     })
 
-    it('should not include resource if no typeof');
+    it('should get the <link> elements', function() {
+      var html = jade.renderFile('./test/examples/link_tags.jade'),
+          parsed = halpert(html),
+          order = parsed._embedded['ea:order'][0]
+
+      assert.equal(_.has(order._links, 'ea:customer'), true);
+    })
 
     describe('nested resources', function() {
       var html = jade.renderFile('./test/examples/nested_resources.jade'),

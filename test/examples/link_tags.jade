@@ -1,0 +1,51 @@
+doctype html
+html(lang="en", prefix="ea: http://example.com/docs/rels/")
+
+  head
+    title Orders - Nested - HAL Example
+    base(href="http://example.com")
+    link(rel="self", href="/orders")
+    link(rel="next", href="/orders?page=2")
+    meta(name="resource", content="ea:orders")
+
+  body
+    div(typeof="ea:orders")
+      h1 Orders
+
+      link(href="/order/history", rel="ea:history")
+
+      dl
+        dt Currently Processing
+        dd(property="currentlyProcessing") 14
+        dt Shipped Today
+        dd(property="shippedToday") 20
+
+      h2 Admin
+
+      ul.admins
+        li
+          a(href="/admins/2", rel="ea:admin", title="Fred") Fred
+        li
+          a(href="/admins/5", rel="ea:admin", title="Kate") Kate
+
+      h2 Order List
+
+      .orders
+
+        .order(typeof="ea:order", resource="/orders/123")
+          h3 Order 123
+          link(rel="ea:customer", href="/customers/7809")
+          
+          dl
+            dt Total
+            dd(property="total") 30.00
+            dt Currency
+            dd(property="currency") USD
+            dt Status
+            dd(property="status") shipped
+
+      h2 Find Order
+
+      form(method="get", action="/orders" name="find")
+        input(name="id", type="text")
+        input(value="Submit")
