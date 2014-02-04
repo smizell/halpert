@@ -103,12 +103,14 @@ describe('Halpert', function() {
       })
     })
 
+    // This is here because without a typeof attribute, we don't
+    // know what kind of link relation it is
     describe('resource without typeof', function() {
       var html = jade.renderFile('./test/examples/typeof.jade'),
           parsed = halpert(html);
 
       it('should not be included', function() {
-        var embeddedCount = _.key(parsed._embedded).length;
+        var embeddedCount = _.keys(parsed._embedded).length;
         assert.equal(embeddedCount, 0);
       })
     })
