@@ -19,6 +19,14 @@ This code does the following based on these assumptions.
 This is a first draft! Please post issues or contact me on Twitter at
 [@Stephen_Mizell](http://twitter.com/Stephen_Mizell)
 
+## Install
+
+Use npm to install halpert.
+
+```bash
+npm install halpert
+```
+
 ## Usage
 
 ```javascript
