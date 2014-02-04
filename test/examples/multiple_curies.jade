@@ -1,0 +1,19 @@
+doctype html
+html(lang="en", prefix="ea: http://example.com/docs/rels/ test: http://test.com/rels/")
+
+  head
+    title Orders - Nested - HAL Example
+    base(href="http://example.com")
+    link(rel="self", href="/orders")
+    link(rel="next", href="/orders?page=2")
+    meta(name="resource", content="ea:orders")
+
+  body
+    div(typeof="ea:orders")
+      h1 Orders
+
+      dl
+        dt Currently Processing
+        dd(property="currentlyProcessing") 14
+        dt Shipped Today
+        dd(property="shippedToday") 20

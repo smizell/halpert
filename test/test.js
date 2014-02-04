@@ -22,7 +22,11 @@ describe('Halpert', function() {
       assert.equal(exampleCurie.name, parsedCurie.name)
     })
 
-    it('should allow for multiple curies');
+    it('should allow for multiple curies', function() {
+      var html = jade.renderFile('./test/examples/multiple_curies.jade'),
+          parsed = halpert(html);
+      assert.equal(parsed._links.curies.length, 2);
+    });
 
     it('should get all of header links', function() {
       var exampleLinks = example._links,
