@@ -18,3 +18,17 @@ This code does the following based on these assumptions.
 
 This is a first draft! Please post issues or contact me on Twitter at
 [@Stephen_Mizell](http://twitter.com/Stephen_Mizell)
+
+## Usage
+
+```javascript
+var halpert = require('halpert');
+
+// Load HTML from file, Jade, or however you wish first
+// I'm assuming below it's loaded to html
+
+// Parse HTML to HAL
+parsedHAL = halpert(html);
+```
+
+See `test/test.js` file for uses and the `test/examples/example.jade` file for what the file looks like.
