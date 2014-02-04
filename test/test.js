@@ -58,32 +58,50 @@ describe('Halpert', function() {
         order = parsedEmbedded['ea:order'][0];
 
     it('should have the order array', function() {
-      assert(parsedEmbedded['ea:order'].length, exampleEmbedded['ea:order'].length)
+      assert.equal(parsedEmbedded['ea:order'].length, exampleEmbedded['ea:order'].length)
     })
 
     it('should have the properites', function() {
-      assert(order.currency, "USD");
+      assert.equal(order.currency, "USD");
     })
 
     it('should have _links', function() {
-      assert(_.has(order, '_links'), true);
+      assert.equal(_.has(order, '_links'), true);
     })
 
     it('should have the self link', function() {
-      assert(_.has(order._links, 'self'), true);
+      assert.equal(_.has(order._links, 'self'), true);
     })
 
     it('should have a self link with href', function() {
-      assert(order._links.self[0].href, '/orders/123');
+      assert.equal(order._links.self[0].href, '/orders/123');
     })
 
-    it('should allow for multiple self links');
-
     it('should have body links', function() {
-      assert(_.has(order._links, 'ea:basket'), true)
+      assert.equal(_.has(order._links, 'ea:basket'), true);
     })
 
     it('should not include resource if no typeof');
+
+    describe('nested resources', function() {
+      var html = jade.renderFile('./test/examples/nested_resources.jade'),
+          nested = halpert(html);
+
+      it('should have the right number of links', function() {
+        var order = nested._embedded['ea:order'][0],
+            orderLinkCount = _.keys(order._links).length;
+        assert.equal(orderLinkCount, 2);
+
+        var item = nested._embedded['ea:item'][0],
+            itemLinkCount = _.keys(item._links).length;
+        assert.equal(itemLinkCount, 3);
+      })
+
+      it('should have the right number of items', function() {
+        assert.equal(nested._embedded['ea:order'].length, 1);
+        assert.equal(nested._embedded['ea:item'].length, 2);
+      })
+    })
   })
 })
 
