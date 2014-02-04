@@ -1,6 +1,6 @@
 {
   "name": "halpert",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "HTML+RDFa implentation of HAL+JSON",
   "main": "index.js",
   "scripts": {
