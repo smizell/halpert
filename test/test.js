@@ -102,6 +102,16 @@ describe('Halpert', function() {
         assert.equal(nested._embedded['ea:item'].length, 2);
       })
     })
+
+    describe('resource without typeof', function() {
+      var html = jade.renderFile('./test/examples/typeof.jade'),
+          parsed = halpert(html);
+
+      it('should not be included', function() {
+        var embeddedCount = _.key(parsed._embedded).length;
+        assert.equal(embeddedCount, 0);
+      })
+    })
   })
 })
 
