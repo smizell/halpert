@@ -18,10 +18,12 @@
     "RDFa"
   ],
   "dependencies": {
-    "mocha": "*",
     "jade": "1.1.5",
     "cheerio": "0.13.1",
     "underscore": "1.5.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
   },
   "author": "Stephen Mizell",
   "license": "MIT",
