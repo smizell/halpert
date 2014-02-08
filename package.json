@@ -1,6 +1,6 @@
 {
   "name": "halpert",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "HTML+RDFa implentation of HAL+JSON",
   "main": "index.js",
   "scripts": {
@@ -18,12 +18,12 @@
     "RDFa"
   ],
   "dependencies": {
-    "jade": "1.1.5",
     "cheerio": "0.13.1",
     "underscore": "1.5.2"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "jade": "1.1.5"
   },
   "author": "Stephen Mizell",
   "license": "MIT",
