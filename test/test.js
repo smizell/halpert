@@ -6,7 +6,7 @@ var assert = require("assert"),
 
 describe('Halpert', function() {
   var html = jade.renderFile('./test/examples/example.jade'),
-      parsed = halpert(html);
+      parsed = new halpert('html', html).toHal();
 
   describe('properties', function() {
     it('should populate properites', function() {
@@ -16,7 +16,7 @@ describe('Halpert', function() {
 
   describe('curies', function() {
     var html = jade.renderFile('./test/examples/multiple_curies.jade'),
-        parsed = halpert(html);
+        parsed = new halpert('html', html).toHal();
 
     it('should allow for multiple curies', function() {
       assert.equal(parsed._links.curies.length, 2);
@@ -65,7 +65,7 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = halpert(html);
+          parsed = new halpert('html', html).toHal();
 
       assert.equal(_.has(parsed._links, 'ea:history'), true);
     })
@@ -102,7 +102,7 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = halpert(html),
+          parsed = new halpert('html', html).toHal(),
           order = parsed._embedded['ea:order'][0]
 
       assert.equal(_.has(order._links, 'ea:customer'), true);
@@ -110,7 +110,7 @@ describe('Halpert', function() {
 
     describe('nested resources', function() {
       var html = jade.renderFile('./test/examples/nested_resources.jade'),
-          nested = halpert(html);
+          nested = new halpert('html', html).toHal();
 
       it('should have the right number of links', function() {
         var order = nested._embedded['ea:order'][0],
@@ -132,7 +132,7 @@ describe('Halpert', function() {
     // know what kind of link relation it is
     describe('resource without typeof', function() {
       var html = jade.renderFile('./test/examples/typeof.jade'),
-          parsed = halpert(html);
+          parsed = new halpert('html', html).toHal();
 
       it('should not be included', function() {
         var embeddedCount = _.keys(parsed._embedded).length;
