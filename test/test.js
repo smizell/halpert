@@ -14,6 +14,22 @@ describe('Halpert', function() {
     })
   })
 
+  describe('curies', function() {
+    var html = jade.renderFile('./test/examples/multiple_curies.jade'),
+        parsed = halpert(html);
+
+    it('should allow for multiple curies', function() {
+      assert.equal(parsed._links.curies.length, 2);
+    });
+
+    it('should have {rel} on the end of the curie', function() {
+      var curieHref = parsed._links.curies[0].href,
+          relStr = '{rel}',
+          endOfCurieHref = curieHref.substr(curieHref.length - relStr.length);
+      assert.equal(endOfCurieHref, relStr);
+    })
+  })
+
   describe('main links', function() {
     it('should get the curie', function() {
       var exampleCurie = example._links.curies[0],
@@ -21,12 +37,6 @@ describe('Halpert', function() {
 
       assert.equal(exampleCurie.name, parsedCurie.name)
     })
-
-    it('should allow for multiple curies', function() {
-      var html = jade.renderFile('./test/examples/multiple_curies.jade'),
-          parsed = halpert(html);
-      assert.equal(parsed._links.curies.length, 2);
-    });
 
     it('should get all of header links', function() {
       var exampleLinks = example._links,
