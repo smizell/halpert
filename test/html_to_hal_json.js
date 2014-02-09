@@ -1,12 +1,12 @@
 var assert = require("assert"),
     jade = require('jade'),
-    halpert = require("../lib/halpert"),
+    Halpert = require("../lib/halpert"),
     example = require("../test/examples/example"),
     _ = require("underscore");
 
-describe('Halpert', function() {
+describe('HTML to JSON', function() {
   var html = jade.renderFile('./test/examples/example.jade'),
-      parsed = new halpert('html', html).toHal();
+      parsed = Halpert.convert(html).from('html').to('hal_json');
 
   describe('properties', function() {
     it('should populate properites', function() {
@@ -16,7 +16,7 @@ describe('Halpert', function() {
 
   describe('curies', function() {
     var html = jade.renderFile('./test/examples/multiple_curies.jade'),
-        parsed = new halpert('html', html).toHal();
+        parsed = Halpert.convert(html).from('html').to('hal_json');
 
     it('should allow for multiple curies', function() {
       assert.equal(parsed._links.curies.length, 2);
@@ -65,7 +65,7 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = new halpert('html', html).toHal();
+          parsed = Halpert.convert(html).from('html').to('hal_json');
 
       assert.equal(_.has(parsed._links, 'ea:history'), true);
     })
@@ -102,7 +102,7 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = new halpert('html', html).toHal(),
+          parsed = Halpert.convert(html).from('html').to('hal_json'),
           order = parsed._embedded['ea:order'][0]
 
       assert.equal(_.has(order._links, 'ea:customer'), true);
@@ -110,7 +110,7 @@ describe('Halpert', function() {
 
     describe('nested resources', function() {
       var html = jade.renderFile('./test/examples/nested_resources.jade'),
-          nested = new halpert('html', html).toHal();
+          nested = Halpert.convert(html).from('html').to('hal_json');
 
       it('should have the right number of links', function() {
         var order = nested._embedded['ea:order'][0],
@@ -132,7 +132,7 @@ describe('Halpert', function() {
     // know what kind of link relation it is
     describe('resource without typeof', function() {
       var html = jade.renderFile('./test/examples/typeof.jade'),
-          parsed = new halpert('html', html).toHal();
+          parsed = Halpert.convert(html).from('html').to('hal_json');
 
       it('should not be included', function() {
         var embeddedCount = _.keys(parsed._embedded).length;
