@@ -1,7 +1,7 @@
 {
   "name": "halpert",
   "version": "0.0.5",
-  "description": "HTML+RDFa implentation of HAL+JSON",
+  "description": "Library for converting from one media type to another",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
