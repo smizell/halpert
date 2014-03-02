@@ -1,5 +1,7 @@
 # Halpert
 
+[![Build Status](https://travis-ci.org/smizell/halpert.png?branch=master)](https://travis-ci.org/smizell/halpert)
+
 This is a library for converting one media type to another. It currently only supports converting from HTML+RDFa to HAL+JSON. 
 
 The idea behind this library is that it parses a media type into a standardized format, and from that format can build to other media types that have build code. Right now, this standardized format is basic and undocumented, but the goal will be to move to [Hyperdescribe](https://github.com/smizell/hyperdescribe) once it is stable and ready for use.
