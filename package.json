@@ -1,7 +1,7 @@
 {
   "name": "halpert",
-  "version": "0.0.4",
-  "description": "HTML+RDFa implentation of HAL+JSON",
+  "version": "0.0.5",
+  "description": "Package for converting from one media type to another",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "jade": "1.1.5"
+    "jade": "1.1.5",
+    "expect.js": "0.3.1"
   },
   "author": "Stephen Mizell",
   "license": "MIT",

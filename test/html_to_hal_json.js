@@ -1,12 +1,14 @@
 var assert = require("assert"),
     jade = require('jade'),
-    halpert = require("../lib/halpert"),
+    Halpert = require("../lib/halpert"),
     example = require("../test/examples/example"),
     _ = require("underscore");
 
-describe('Halpert', function() {
-  var html = jade.renderFile('./test/examples/example.jade'),
-      parsed = halpert(html);
+describe('HTML to JSON', function() {
+  beforeEach(function() {
+    html = jade.renderFile('./test/examples/example.jade');
+    parsed = new Halpert(html, 'text/html').convertTo('application/hal+json');
+  })
 
   describe('properties', function() {
     it('should populate properites', function() {
@@ -15,8 +17,10 @@ describe('Halpert', function() {
   })
 
   describe('curies', function() {
-    var html = jade.renderFile('./test/examples/multiple_curies.jade'),
-        parsed = halpert(html);
+    beforeEach(function() {
+      html = jade.renderFile('./test/examples/multiple_curies.jade');
+      parsed = new Halpert(html, 'text/html').convertTo('application/hal+json');
+    })
 
     it('should allow for multiple curies', function() {
       assert.equal(parsed._links.curies.length, 2);
@@ -48,8 +52,10 @@ describe('Halpert', function() {
   })
 
   describe('body links', function() {
-    var exampleLinks = example._links,
-        parsedLinks = parsed._links;
+    beforeEach(function() {
+      exampleLinks = example._links;
+      parsedLinks = parsed._links;
+    })
 
     it('should get the <a> elements', function() {
       var exampleKate = _.filter(exampleLinks['ea:admin'], function(link) {
@@ -65,16 +71,18 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = halpert(html);
+          parsed = new Halpert(html, 'text/html').convertTo('application/hal+json');
 
       assert.equal(_.has(parsed._links, 'ea:history'), true);
     })
   })
 
   describe('embedded', function() {
-    var exampleEmbedded = example._embedded,
-        parsedEmbedded = parsed._embedded,
-        order = parsedEmbedded['ea:order'][0];
+    beforeEach(function() {
+      exampleEmbedded = example._embedded;
+      parsedEmbedded = parsed._embedded;
+      order = parsedEmbedded['ea:order'][0];
+    })
 
     it('should have the order array', function() {
       assert.equal(parsedEmbedded['ea:order'].length, exampleEmbedded['ea:order'].length)
@@ -102,15 +110,17 @@ describe('Halpert', function() {
 
     it('should get the <link> elements', function() {
       var html = jade.renderFile('./test/examples/link_tags.jade'),
-          parsed = halpert(html),
+          parsed = new Halpert(html, 'text/html').convertTo('application/hal+json');
           order = parsed._embedded['ea:order'][0]
 
       assert.equal(_.has(order._links, 'ea:customer'), true);
     })
 
     describe('nested resources', function() {
-      var html = jade.renderFile('./test/examples/nested_resources.jade'),
-          nested = halpert(html);
+      beforeEach(function() {
+        html = jade.renderFile('./test/examples/nested_resources.jade');
+        nested = new Halpert(html, 'text/html').convertTo('application/hal+json');
+      })
 
       it('should have the right number of links', function() {
         var order = nested._embedded['ea:order'][0],
@@ -131,8 +141,10 @@ describe('Halpert', function() {
     // This is here because without a typeof attribute, we don't
     // know what kind of link relation it is
     describe('resource without typeof', function() {
-      var html = jade.renderFile('./test/examples/typeof.jade'),
-          parsed = halpert(html);
+      beforeEach(function() {
+        html = jade.renderFile('./test/examples/typeof.jade');
+        parsed = new Halpert(html, 'text/html').convertTo('application/hal+json');
+      })
 
       it('should not be included', function() {
         var embeddedCount = _.keys(parsed._embedded).length;
