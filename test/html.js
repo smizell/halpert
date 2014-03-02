@@ -6,10 +6,13 @@ var Halpert = require("../lib/halpert"),
     html = jade.renderFile('./test/examples/example.jade');
 
 describe('HTML', function() {
-  var html = jade.renderFile('./test/examples/example.jade');
+  beforeEach(function() {
+    html = jade.renderFile('./test/examples/example.jade');
+    resource = Halpert(html, 'text/html');
+  })
 
-  it('should return an object', function() {
-    var htmlParsed = Halpert.convert(html).from('html')
-    expect(htmlParsed.parsedData).to.be.an(Object);
+  it('should parse to an object', function() {
+    resource.parse();
+    expect(resource.parsed).to.be.an(Object);
   })
 })
