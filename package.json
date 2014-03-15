@@ -1,6 +1,6 @@
 {
   "name": "halpert",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Package for converting from one media type to another",
   "main": "index.js",
   "scripts": {
