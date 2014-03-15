@@ -39,7 +39,7 @@ var Converter = function(formats) {
 var Halpert = module.exports = function() {
 
   // Formats are the available formats for Halpert to use
-  // when parsing and building
+  // when describing and building media types
   this.formats = {};
 
   // For registering a media type for Halpert to describe from
