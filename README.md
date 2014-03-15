@@ -71,4 +71,4 @@ Currently supported formats:
 ## Contributing
 
 * Please make sure all contributions are covered by tests
-* Run `grunt build` once 
+* Run `grunt build` once all changes are complete
