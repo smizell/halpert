@@ -1,20 +1,20 @@
 var Halpert = require('../lib/halpert'),
     expect = require('expect.js');
 
-var parser = function(x) { return "parsed " + x; },
+var describer = function(x) { return "described " + x; },
     builder = function(x) { return "built from " + x; };
 
 var format1 = {
   name: 'format1',
   mediaType: 'application/vnd.fake-format1',
-  parser: parser,
+  describer: describer,
   builder: builder
 };
 
 var format2 = {
   name: 'format2',
   mediaType: 'application/vnd.fake-format2',
-  parser: parser,
+  describer: describer,
   builder: builder
 };
 
@@ -42,21 +42,21 @@ describe("Halpert", function() {
     });
   });
 
-  describe("#parse", function() {
+  describe("#describe", function() {
 
-    it("should parse a format", function() {
+    it("should describe a format", function() {
       halpert.registerFormat(format1);
-      var parsed = halpert.parse("1", "application/vnd.fake-format1");
-      expect(parsed).to.equal("parsed 1");
+      var described = halpert.describe("1", "application/vnd.fake-format1");
+      expect(described).to.equal("described 1");
     });
   });
 
   describe("#build", function() {
 
-    it("should parse a format", function() {
+    it("should describe a format", function() {
       halpert.registerFormat(format1);
-      var parsed = halpert.build("hyperdecribe", "application/vnd.fake-format1");
-      expect(parsed).to.equal("built from hyperdecribe");
+      var described = halpert.build("hyperdecribe", "application/vnd.fake-format1");
+      expect(described).to.equal("built from hyperdecribe");
     });
   });
 
@@ -67,7 +67,7 @@ describe("Halpert", function() {
     });
 
     it("should return a converter object", function() {
-      var converter = halpert.convertFrom("unparsed", "application/vnd.fake-format1");
+      var converter = halpert.convertFrom("undescribed", "application/vnd.fake-format1");
       expect(converter).to.be.an(halpert.Converter);
       expect(converter).to.have.key("to");
     });
@@ -83,7 +83,7 @@ describe("Halpert", function() {
     it("should return a built value", function() {
       var converter = halpert.convertFrom("example", "application/vnd.fake-format1");
       var newFormat = converter.to("application/vnd.fake-format2");
-      expect(newFormat).to.equal("built from parsed example");
+      expect(newFormat).to.equal("built from described example");
     });
   });
 });
