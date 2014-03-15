@@ -29,6 +29,9 @@
     "grunt-contrib-jshint": "~0.9.2",
     "grunt-mocha-test": "~0.10.0"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "author": "Stephen Mizell",
   "license": "MIT",
   "bugs": {
