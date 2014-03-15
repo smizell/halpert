@@ -17,12 +17,21 @@ module.exports = function(grunt) {
           'dist/halpert.min.js': 'dist/halpert.js'
         }
       }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
-  grunt.registerTask( "build", ["jshint", "browserify", "uglify"] );
+  grunt.registerTask( "build", ["jshint", "mochaTest", "browserify", "uglify"] );
 };
