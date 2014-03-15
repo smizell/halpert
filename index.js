@@ -1,2 +1,6 @@
+
+// Export the Halpert object
 exports = module.exports = require('./lib/halpert');
-exports.version = require('./package').version;
+
+// Version from the package file
+exports.VERSION = require('./package').version;
