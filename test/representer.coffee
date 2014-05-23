@@ -7,7 +7,7 @@ formats =
     parser: (x) -> { parsed: !x.parsed }
     builder: (x) -> { built: !x.built }
 
-repObject =
+exampleObject =
   links: [
     { rels: [ "item" ], href: "/item1" }
     { rels: [ "item" ], href: "/item2" }
@@ -21,3 +21,8 @@ describe "Representer", ->
       rep = new Representer(formats, data)
       newFormat = rep.toFormat("application/vnd.fake-format")
       expect(newFormat.built).to.equal true
+
+  describe "#hasLinks", ->
+    it "should respond true if there are links", ->
+      rep = new Representer(formats, data)
+      expect(rep.hasLinks()).to.be true
