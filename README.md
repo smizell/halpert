@@ -44,6 +44,10 @@ var doc = {
 represnter = halpert.represent(doc, 'application/hal+json');
 ```
 
+## Creating Halpert Plugins
+
+More on this to come. Each plugin will use the [Halpert Representer library](http://github.com/smizell/halpert-representer).
+
 ## Contributing
 
 * Please make sure all contributions are covered by tests
