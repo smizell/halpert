@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/smizell/halpert.png?branch=master)](https://travis-ci.org/smizell/halpert)
 
-Halpert is a library with the goal of teaching clients and servers about hypermedia formats they may not understand. Representations of a resource can be given to Halpert along with a desired media type, and Halpert will convert to this media type.
-
-Halpert converts to and builds from the [Hyperdescribe](https://github.com/smizell/hyperdescribe) format, which is a format for describing a hypermedia resource. 
+Halpert is a library for representing and interfacing with hypermedia formats. It provides a way for converting to and from these formats, along with methods for filtering and parsing through them in a general way.
 
 ## Install
 
@@ -14,7 +12,39 @@ Use npm to install halpert.
 npm install halpert
 ```
 
+## Supported Formats
+
+* [HAL+JSON](https://github.com/smizell/halpert-hal-json) - Currently only parses HAL objects
+
+## Usage
+
+### Initializing and Registering Formats
+
+To initialize a Halpert object and register the formats, require the halpert package along with any formats desired. The example below includes the HAL+JSON format.
+
+```javascript
+var Halpert = require('halpert'),
+    halJson = require('halpert-hal-json');
+
+halpert = new Halpert;
+halpert.registerFormat(halJson);
+```
+
+### Representing Documents
+
+Once you have a Halpert object like above, you can then start representing documents.
+
+```javascript
+var doc = {
+  _links: { self: { href: "/customer/4" }},
+  full_name: "John Doe",
+  email: "john@doe.com"
+}
+
+represnter = halpert.represent(doc, 'application/hal+json');
+```
+
 ## Contributing
 
 * Please make sure all contributions are covered by tests
-* Run `grunt build` once all changes are complete
+* Run `gulp build` once all changes are complete
