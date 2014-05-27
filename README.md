@@ -41,7 +41,7 @@ var doc = {
   email: "john@doe.com"
 }
 
-represnter = halpert.represent(doc, 'application/hal+json');
+var representer = halpert.represent(doc, 'application/hal+json');
 ```
 
 ## Creating Halpert Plugins
