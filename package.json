@@ -1,6 +1,6 @@
 {
   "name": "halpert",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Package for converting from one media type to another",
   "main": "index.js",
   "repository": {
@@ -13,8 +13,7 @@
     "Hypermedia"
   ],
   "dependencies": {
-    "lodash": "~2.4.1",
-    "coffee-script": "~1.7.1"
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "mocha": "~1.19.0",
