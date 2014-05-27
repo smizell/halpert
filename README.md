@@ -14,60 +14,6 @@ Use npm to install halpert.
 npm install halpert
 ```
 
-## Usage
-
-### Describe a media type with Hyperdescribe
-
-```javascript
-var halpert = new Halpert;
-halpert.describe(uberDoc, 'application/vnd.amundsen-uber+json')
-```
-
-### Build to a media type from Hyperdescribe
-
-```javascript
-halpert.build(hyperdescribeObj, 'application/vnd.amundsen-uber+json')
-```
-
-### Build from one media type to another
-
-```javascript
-halpert.convertFrom(uberDoc, 'application/vnd.amundsen-uber+json').to('application/hal+json')
-```
-
-## Hypermedia Formats
-
-### Creating object for Halpert to register
-
-To register a form, Halpert requires a special object in order to know how
-to register the format. An object has these distinct properties:
-
-* `name` - Human-readable name for the media type. OPTIONAL.
-* `mediaType` - A string that defines the media type template (application/hal+json). REQUIRED.
-* `describer` - A function that takes a variable of some sort and returns a Hyperdescribe object.  REQUIRED.
-* `builder` - A function that takes a Hyperdescribe object and build to the media type.  REQUIRED.
-
-```javascript
-HyperdescribeUberJSON = module.exports = {
-  name: 'UBER',
-  mediaType: 'application/vnd.amundsen-uber+json',
-  describer: describer,
-  builder: builder
-}
-```
-
-### Registering Formats
-
-```javascript
-halpert.registerFormat(HyperdescribeUberJSON)
-```
-
-## Supported Formats
-
-Currently supported formats:
-
-* [UBER+JSON](https://github.com/smizell/hyperdescribe-uber-json) (NOT COMPLETE)
-
 ## Contributing
 
 * Please make sure all contributions are covered by tests

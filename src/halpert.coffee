@@ -1,5 +1,3 @@
-Representer = require('./representer');
-
 module.exports = class Halpert
 
   constructor: () ->
@@ -9,4 +7,4 @@ module.exports = class Halpert
     @formats[format.formatName] = format
 
   represent: (data, formatName) ->
-    new Representer(@formats, data, formatName);
+    @formats[formatName].parser(@formats, data)
